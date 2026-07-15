@@ -8,10 +8,14 @@ export const App = () => {
   const [todos, setTodos] = useState(todosFromServer);
   const [title, setTitle] = useState('');
   const [userId, setUserId] = useState('');
-  const [errors, setErrors] = useState({ titleError: '', userError: '' });
+  const [errors, setErrors] = useState({
+    titleError: '',
+    userError: '',
+  });
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+
     let titleError = '';
     let userError = '';
 
@@ -24,72 +28,129 @@ export const App = () => {
     }
 
     if (titleError || userError) {
-      setErrors({ titleError, userError });
+      setErrors({
+        titleError,
+        userError,
+      });
 
       return;
     }
+
+    const user = usersFromServer.find(
+      item => item.id === Number(userId),
+    );
 
     const newTodo = {
       id: Math.max(...todos.map(todo => todo.id), 0) + 1,
       title: title.trim(),
       userId: Number(userId),
       completed: false,
+      user,
     };
 
-    setTodos([...todos, newTodo]);
+    setTodos([
+      ...todos,
+      newTodo,
+    ]);
+
     setTitle('');
     setUserId('');
-    setErrors({ titleError: '', userError: '' });
+
+    setErrors({
+      titleError: '',
+      userError: '',
+    });
   };
 
   return (
     <div className="App">
       <h1>Add todo form</h1>
 
-      <form action="/api/todos" method="POST" onSubmit={handleSubmit}>
+      <form
+        action="/api/todos"
+        method="POST"
+        onSubmit={handleSubmit}
+      >
         <div className="field">
+          <label htmlFor="title">
+            Title
+          </label>
+
           <input
+            id="title"
             type="text"
             placeholder="Title"
             data-cy="titleInput"
             value={title}
             onChange={event => {
               setTitle(event.target.value);
-              setErrors({ ...errors, titleError: '' });
+              setErrors({
+                ...errors,
+                titleError: '',
+              });
             }}
           />
+
           {errors.titleError && (
-            <span className="error">{errors.titleError}</span>
+            <span className="error">
+              {errors.titleError}
+            </span>
           )}
         </div>
 
+
         <div className="field">
+          <label htmlFor="user">
+            User
+          </label>
+
           <select
+            id="user"
             data-cy="userSelect"
             value={userId}
             onChange={event => {
               setUserId(event.target.value);
-              setErrors({ ...errors, userError: '' });
+              setErrors({
+                ...errors,
+                userError: '',
+              });
             }}
           >
-            <option value="">Choose a user</option>
+            <option value="">
+              Choose a user
+            </option>
+
             {usersFromServer.map(user => (
-              <option key={user.id} value={user.id}>
+              <option
+                key={user.id}
+                value={user.id}
+              >
                 {user.name}
               </option>
             ))}
           </select>
+
           {errors.userError && (
-            <span className="error">{errors.userError}</span>
+            <span className="error">
+              {errors.userError}
+            </span>
           )}
         </div>
 
-        <button type="submit" data-cy="submitButton">
+
+        <button
+          type="submit"
+          data-cy="submitButton"
+        >
           Add
         </button>
       </form>
 
-      <TodoList todos={todos} users={usersFromServer} />
+
+      <TodoList
+        todos={todos}
+        users={usersFromServer}
+      />
     </div>
   );
 };
