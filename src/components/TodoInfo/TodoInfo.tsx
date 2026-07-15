@@ -1,3 +1,4 @@
+import { Todo } from '../../types/Todo.ts';
 import { UserInfo } from '../UserInfo';
 
 type Props = {

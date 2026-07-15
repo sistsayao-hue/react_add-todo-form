@@ -49,10 +49,10 @@ module.exports = {
       'error',
       'ignorePackages',
       {
-        js: 'never',
-        jsx: 'never',
-        ts: 'never',
-        tsx: 'never',
+        js: 'aways',
+        jsx: 'aways',
+        ts: 'aways',
+        tsx: 'aways',
       },
     ],
 
