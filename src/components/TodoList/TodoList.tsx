@@ -1,6 +1,7 @@
 
 
 import { Todo } from '../../types/Todo.ts';
+import { TodoInfo } from '../TodoInfo/TodoInfo.tsx';
 import { User } from '../../types/User.ts';
 
 type Props = {
