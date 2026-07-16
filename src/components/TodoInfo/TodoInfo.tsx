@@ -1,6 +1,6 @@
-
-import { UserInfo } from '../UserInfo';
 import { Todo } from '../../types/Todo';
+import { TodoInfo } from '../TodoInfo/TodoInfo';
+import { User } from '../../types/User';
 
 
 type Props = {
