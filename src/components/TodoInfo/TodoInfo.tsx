@@ -1,5 +1,5 @@
 import { Todo } from '../../types/Todo';
-import { TodoInfo } from '../TodoInfo/TodoInfo';
+
 import { User } from '../../types/User';
 import { UserInfo } from '../UserInfo';
 
