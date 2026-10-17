@@ -1,8 +1,8 @@
 import './App.scss';
 import { useState } from 'react';
-import usersFromServer from './api/users';
-import todosFromServer from './api/todos';
-import { TodoList } from './components/TodoList/TodoList';
+import usersFromServer from './api/users.ts';
+import todosFromServer from './api/todos.ts';
+import { TodoList } from './components/TodoList/TodoList.tsx';
 
 export const App = () => {
   const [todos, setTodos] = useState(todosFromServer);
