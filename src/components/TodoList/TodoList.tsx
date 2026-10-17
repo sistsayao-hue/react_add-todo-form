@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TodoInfo } from '../TodoInfo/TodoInfo';
+import { TodoInfo } from '../TodoInfo/TodoInfo.tsx';
 
 type Props = {
   todos: Todo[];
