@@ -68,13 +68,11 @@ module.exports = {
   'error',
   'always',
   {
+    ignorePackages: true,
     js: 'always',
     jsx: 'always',
     ts: 'always',
     tsx: 'always',
-  },
-  {
-    ignorePackages: true,
   },
 ],
     // React
