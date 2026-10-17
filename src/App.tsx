@@ -1,3 +1,4 @@
+
 import './App.scss';
 import { useState } from 'react';
 import usersFromServer from './api/users.ts';
@@ -82,8 +83,8 @@ export const App = () => {
             placeholder="Title"
             data-cy="titleInput"
             value={title}
-            onChange={event => {
-              setTitle(event.target.value);
+            onChange={changeEvent => {
+              setTitle(changeEvent.target.value);
               setErrors({
                 ...errors,
                 titleError: '',
@@ -98,7 +99,6 @@ export const App = () => {
           )}
         </div>
 
-
         <div className="field">
           <label htmlFor="user">
             User
@@ -108,8 +108,8 @@ export const App = () => {
             id="user"
             data-cy="userSelect"
             value={userId}
-            onChange={event => {
-              setUserId(event.target.value);
+            onChange={changeEvent => {
+              setUserId(changeEvent.target.value);
               setErrors({
                 ...errors,
                 userError: '',
@@ -137,7 +137,6 @@ export const App = () => {
           )}
         </div>
 
-
         <button
           type="submit"
           data-cy="submitButton"
@@ -145,7 +144,6 @@ export const App = () => {
           Add
         </button>
       </form>
-
 
       <TodoList
         todos={todos}
