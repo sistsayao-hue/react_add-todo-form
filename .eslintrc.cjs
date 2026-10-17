@@ -64,6 +64,16 @@ module.exports = {
 
     'implicit-arrow-linebreak': 0,
 
+    'import/extensions': [
+      'error',
+      'always',
+      {
+        js: 'always',
+        jsx: 'always',
+        ts: 'always',
+        tsx: 'always',
+      },
+    ],
     // React
     'react/prop-types': 0,
     'react/require-default-props': 0,
